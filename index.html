@@ -5,6 +5,15 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  
+ {% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    {% if site.google_analytics and jekyll.environment == 'production' %}
+    {% include analytics.html %}
+    {% endif %}
+ 
  <!-- Loads <model-viewer> for modern browsers: -->
  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
   
@@ -76,6 +85,23 @@ var promise = sound.play();
         sound.currentTime = time;
       }
    </script>
+ 
+ <script>
+/**
+* Function that registers a click on an outbound link in Analytics.
+* This function takes a valid URL string as an argument, and uses that URL string
+* as the event label. Setting the transport method to 'beacon' lets the hit be sent
+* using 'navigator.sendBeacon' in browser that support it.
+*/
+var getOutboundLink = function(url) {
+  gtag('event', 'click', {
+    'event_category': 'outbound',
+    'event_label': url,
+    'transport_type': 'beacon',
+    'event_callback': function(){document.location = url;}
+  });
+}
+</script>
  
 <style> 
  
@@ -149,6 +175,7 @@ var promise = sound.play();
           Sync("#model-viewer", "#sound");
         });
       </script>
+     
      <h2 style="text-align: center;" markdown="1"><p style="font-family:helvetica neue bold"><b>FOLLOW THE SCIENCE:</b>
       <a href="https://www.k18hair.com/pages/our-science" onclick="getOutboundLink('https://www.k18hair.com/pages/our-science');
                                                                    return false;"<b> LEARN MORE HERE</p></b></h2></a>
