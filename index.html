@@ -133,7 +133,9 @@ var getOutboundLink = function(url) {
        <model-viewer src="Models/K18_AR_version_3_FixedTexts.glb?sound=Sound/K18 VOICE_AR.mp3"
                     autoplay animation-name="" id="interaction" ar ar-modes="scene-viewer webxr quick-look" ios-src="Models/DodgerGuy.reality"
                     alt="K18 Fiber Journey" auto-rotate-delay="0" ar-scale="auto"
-                    style="z-index: 1; width: 100%; height: 480px; position: static; "><button slot="ar-button"
+                    <slot= "progress-bar ">
+                    style="z-index: 1; width: 100%; height: 480px; position: static; ">
+                    <button slot="ar-button" 
                     style="z-index: 9; background-color: white; border-radius: 8px; border: 1 px solid white; position: absolute; top: 2px; right: 0; height: auto; width: auto; ">
 
       👆 AR Click Here
