@@ -7,192 +7,43 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  
  </head>
- <!-- Loads <model-viewer> for modern browsers: -->
- <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
-  
- <script nomodule="" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
- <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
-  <!-- The following libraries and polyfills are recommended to maximize browser support -->  
-  <!-- REQUIRED: Web Components polyfill to support Edge and Firefox < 63 -->
-  <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+ <div class="page">
+  <div class="background">
 
-  <!-- OPTIONAL: Intersection Observer polyfill for better performance in Safari and IE11 -->
-  <script src="https://unpkg.com/intersection-observer/intersection-observer.js"></script>
+    <iframe allowtransparence="true" width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/4s3GDB?gui=false&t=10&paused=false&muted=false" frameborder="0" style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
+  </div>
+  <content>
+    <h1>HTML Ipsum Presents</h1>
 
-  <!-- OPTIONAL: Resize Observer polyfill improves resize behavior in non-Chrome browsers -->
-  <script src="https://unpkg.com/resize-observer-polyfill/dist/ResizeObserver.js"></script>
- 
- <script>
-      function Sync(selector, audioSelector) {
-        var modelViewer = document.querySelector(selector);
-        var sound = document.querySelector(audioSelector);
-        var playRequest = document.querySelector("#overlay");
+    <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em>      Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci,
+      sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
 
-   sound.addEventListener("timeupdate", () => {
-          modelViewer.currentTime = sound.currentTime;
-          console.log("modelViewer time: " + modelViewer.currentTime);
-        });
+    <h2>Header Level 2</h2>
 
-   sound.addEventListener("pause", () => {
-          modelViewer.pause();
-        });
+    <ol>
+      <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+      <li>Aliquam tincidunt mauris eu risus.</li>
+    </ol>
 
-   sound.addEventListener("play", () => {
-          modelViewer.play();
+    <blockquote>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus
+        turpis elit sit amet quam. Vivamus pretium ornare est.</p>
+    </blockquote>
 
-   playRequest.classList.add("hide");
-        });
+    <h3>Header Level 3</h3>
 
-   document.addEventListener("visibilitychange", () => {
-          if (document.visibilityState !== "visible") {
-            sound.pause();
-          }
-        });
-var promise = sound.play();
-        if (promise !== undefined) {
-          promise
-            .then(_ => {
-              console.log("Autoplay has worked");
-              playRequest.classList.add("hide");
-            })
-            .catch(error => {
-              // Show a "Play" button so that user can start playback.
-              console.log("Autoplay has not worked");
+    <ul>
+      <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+      <li>Aliquam tincidunt mauris eu risus.</li>
+    </ul>
 
-   // show the modal dialogue to play this
-   playRequest.classList.remove("hide");
-            });
-        }
-
-   }  
-      function playNow() {
-        var playRequest = document.querySelector("#overlay");
-        playRequest.classList.add("hide");
-
-   var sound = document.querySelector("#sound");
-        sound.play();
-      }
-
-   function jumpTo(time) {
-        var sound = document.querySelector("#sound");
-        sound.currentTime = time;
-      }
-   </script>
- 
- <script>
-/**
-* Function that registers a click on an outbound link in Analytics.
-* This function takes a valid URL string as an argument, and uses that URL string
-* as the event label. Setting the transport method to 'beacon' lets the hit be sent
-* using 'navigator.sendBeacon' in browser that support it.
-*/
-var getOutboundLink = function(url) {
-  gtag('event', 'click', {
-    'event_category': 'outbound',
-    'event_label': url,
-    'transport_type': 'beacon',
-    'event_callback': function(){document.location = url;}
-  });
+    <pre><code>
+#header h1 a {
+  display: block;
+  width: 300px;
+  height: 80px;
 }
-</script>
- 
-<style> 
- 
-.container {
- column-count: 2;
- column-width: 250px;
- column-gap: 10px;
-}
-  .card {
-  break-inside: avoid;
-  background-color: rgb(255, 255, 255);
-  border: 2px solid rgb(255, 255, 255);
-  padding: 10px;
-  margin: 0 0 1em 0;
-}
-}
-  .stack-top{
-   z-index: 9;
-}
- .marginauto {
-    margin: 10px auto 10px;
-    display: block;
-}
-</style>
+</code></pre>
 
-<body>
-
-<!--<h1>The column-count Property</h1> -->
-<!--<p>The column-count property defines the number of columns an element is divided into:</p> -->
-
-<div class="container">
-    <div class="card">
-      <img class="marginauto" src="images/aquis logo-K18 a200.png" alt="Logo" style="width: auto; height: 100px"> 
-      
-     <div class="card">
-       <model-viewer src="Models/K18_AR_version_3_FixedTexts.glb?sound=Sound/K18 VOICE_AR.mp3"
-                    autoplay animation-name="" id="interaction" ar ar-modes="scene-viewer webxr quick-look" ios-src="Models/DodgerGuy.reality"
-                    alt="K18 Fiber Journey" auto-rotate-delay="0" ar-scale="auto"
-                    slot= "progress-bar"
-                    style="z-index: 1; width: 100%; height: 480px; position: static; ">
-                    <button slot="ar-button" 
-                    style="z-index: 9; background-color: white; border-radius: 8px; border: 1 px solid white; position: absolute; top: 2px; right: 0; height: auto; width: auto; ">
-
-      👆 AR Click Here
-       </button>   
-        <div class="card"> 
-     <model-viewer id="model-viewer" loading="eager" src="Models/K18_TEST_Ver.5.glb?sound=Sound/K18 VOICE.mp3" camera-controls
-                   camera-orbit="0deg 90deg 30%" autoplay animation-name="" id="reveal"
-                   ios-src="Models/DodgerGuy.reality" alt="K18 Fiber Journey" auto-rotate-delay="0" camera-controls alt="K18-Test-Demo-1"
-                   style="z-index: 2; width: 100%; height: 500px; position: static; ">
-      </model-viewer>
-      </div>
-      
-   </model-viewer>
-     </div>   
-   
-     <section class="attribution">
-        <div>
-          <span>
-            <h1 style="text-align: center;" markdown="1"><p style="font-family:helvetica neue bold">Listen to Narration</p></h1>
-              <p align="center">
-              <span>
-              <audio controls autoplay loop id="sound">
-                <source src="Sound/K18 VOICE.mp3"/>
-              </audio
-            ></span> 
-             </p>
-            </span>
-         </div>
-   </section>
-   <script>    
-        window.addEventListener("load", () => {
-          Sync("#model-viewer", "#sound");
-        });
-      </script>
-     
-     <h2 style="text-align: center;" markdown="1"><p style="font-family:helvetica neue bold"><b>FOLLOW THE SCIENCE:</b>
-      <a href="https://www.k18hair.com/pages/our-science" onclick="getOutboundLink('https://www.k18hair.com/pages/our-science');
-                                                                   return false;"<b> LEARN MORE HERE</p></b></h2></a>
-    </div>
-
-    <div class="card">
-      <h1 style="text-align: center;" markdown="1"><b style="color:#FF595A;"><p style="font-family:helvetica neue bold">Explore AR: inside the world of hair</h1></b>
-      <h1 style="text-align: center;" markdown="1"><b style="color:#FF595A;">view on mobile devices</p></h1></b>
-      <img class="marginauto" src="images/K18 instructions 2.png" style="width: auto; height: 500px"> 
-          </style>
-     
-    </div>
-
-    <div class="card">
-    <h2 style="text-align: center;" markdown="1"><p style="font-family:helvetica neue bold">JOIN THE REVOLUTION<a href="https://www.k18hair.com/pages/our-science" 
-        onclick="getOutboundLink('https://www.k18hair.com/pages/our-science'); return false;">[REWARD]</p></a></h2>
-     <h3 style="text-align: center;" markdown="1"><a href="https://avertek.net/" onclick="getOutboundLink('https://avertek.net/');
-       return false;"><p style="font-family:helvetica neue bold">Learn More About AVERtek's XR-NOW</p></a></h3>
-    </div>
-
-
+  </content>
 </div>
-</body>
-</html>
-
